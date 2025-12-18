@@ -1,0 +1,15 @@
+services:
+    db:
+        image: postgres:15 # The "cartridge" version
+        container_name: fitness-db
+        environment:
+            POSTGRES_DB: fitnessdb # The name of your specific database
+            POSTGRES_USER: fitnessuser # The username to log in
+            POSTGRES_PASSWORD: password # The password (keep it simple for local dev)
+        ports:
+            - "5432:5432" # Maps your computer's port 5432 to the container's port 5432
+        volumes:
+            - db_data:/var/lib/postgresql/data # Saves your data so it survives restarts
+
+volumes:
+    db_data: # Tells Docker to create a persistent storage area
